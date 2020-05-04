@@ -1,0 +1,209 @@
+<!doctype html>
+<!--You know who I am-->
+<html lang="ja">
+<head>
+
+  <title>Multi search engins</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" media="(min-width: 640px)" href="{{url_for('static',filename='style_pc.css')}}">
+    <link rel="stylesheet" media="(max-width: 640px)" href="{{url_for('static',filename='style_mobile.css')}}">
+
+
+
+
+  <style>
+    @media print, screen  and (min-width: 640px) {
+    body{
+        /*background-color:#000000;*/
+        background-color:#FF0461;
+      }
+        h1 {text-shadow:6px 6px 2px black;
+            font-size: 90px;
+            color:#FF97C2;
+            /*color: white;*/
+            }
+        .titlesent {font-size: 30px;
+          text-shadow:2px 2px 1px black;
+          }
+          }
+        .mainsent{
+          font-size: 30px;
+        }
+        .kekkatitle{
+          font-size: 30px;
+        }
+        .kekka{
+          font-size: 50px;
+        }
+        .github{
+          text-shadow:2px 2px 1px black;
+        }
+        .homepage{
+          text-shadow:2px 2px 1px black;
+        }
+        .document{
+          text-shadow:2px 2px 1px black;
+        }
+
+
+
+
+    @media screen and (max-width: 640px) {
+      body{
+        background-color:#FF0461;
+      }
+      h1{text-align:center;
+        text-shadow:4px 4px 2px black;
+            font-size: 40px;
+            color:#FF97C2;}
+
+      .kekka{
+        font-size: 30px;
+      }
+
+    }
+</style>
+</head>
+<body>
+  <!-- 桜-->
+<div class="row">
+<canvas id="cvs" class="w-100" height="500px"  width="680px" class="sakura"  style="position:absolute;"></canvas>
+</div>
+<div class="container">
+<!-- <p class="display-5 text-light  pt-5 pb-4 ">ここにコードを記述してください</p> -->
+<p class="display-5 text-light titlesent mt-3 ">The programming language</p>
+<h1 class=" text-center pt-2 pb-4 ">HARUKAZE</h1>
+<div class="form-group">
+  <form method="post" action="/">
+  <div class="row">
+      <div class="col-lg-5 col-12">
+        <!-- <h1 class="display-1 text-light  pt-5 pb-4 ">HarukaZe</h1> -->
+        <p class="display-5 text-light mainsent mt-5">日本語で命令を実行するプログラミング言語「HARUKAZE」のホームページ及び実行環境です。コードを記述し、実行ボタンを押すと実行結果を表示します。まだ制作途中のため、予期せぬエラーが起こるかもしれません。</p>
+        <p class="display-5 text-light mainsent mt-5">文法、使い方は<a class="document text-light" href="https://github.com/hirokazuniimoto">ドキュメント</a>を参考にしてください。</p>
+        <p class="display-5 text-light mainsent mt-5">ソースコード → <a class="github text-light" href="https://github.com/hirokazuniimoto">Github</a></p>
+        <p class="display-5 text-light mainsent mt-5">制作者 → <a class=" homepage text-light" href="https://hirokazuniimoto.github.io/portfolio/">ホームページ</a></p>
+
+      </div>
+
+
+
+
+
+      <div class="col-lg-7 col-12">
+        <div class="row">
+      <p class="display-5 col-lg-1 col-1"></p>
+      <!--<input  class="text col-11 pt-2 mt-5 username" type="text"  name="field1" value=""　style="font-size:20px; background-color:#FF69A3; width:800px; height:433px;"> -->
+      <textarea   class="col-lg-11 col-10 pt-2 mt-5" cols="20" rows="10" value="" name="field1" style=" border:solid 0px; font-size:20px; background-color:#FF69A3	; width:800px; height:433px;"  >
+  出力："春風"  終
+      </textarea>
+      <p class="display-5 col-lg-0 col-1"></p>
+      </div>
+      <div class="row">
+        <p class="display-5 col-0"></p>
+        <p class="display-5 col-lg-5 col-2"></p>
+        <input type="submit" class="mt-3 btn-primary col-lg-3 col-8" value="コード実行"　style="height:35;">
+        <p class="display-5 col-lg-4 col-2"></p>
+      </div>
+
+      <div class="row">
+        <p class="display-5 col-lg-2 col-2"></p>
+        <p class="display-4 text-center mt-5 text-light kekkatitle col-lg-9 col-8">実行結果</p>
+        <p class="display-5 col-lg-1 col-2"></p>
+      </div>
+
+      <div class="row">
+        <p class="display-5 col-lg-2 col-0" ></p>
+        <p class="kekka display-4 text-center text-light mt-2 col-lg-9 col-12">{{result}}</p>
+        <p class="display-5 col-lg-1 col-0"></p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  </form>
+
+
+
+  <script type="text/javascript" >
+  var canvas = document.getElementById("cvs");
+  var ctx = canvas.getContext("2d");
+  var imgCnt = 25;          // 描画する画像の数
+  var aryImg = [];          // 画像の情報を格納
+  var cvsw = 680;           // canvasタグに指定したwidth
+  var cvsh = 500;           // canvasタグに指定したheight
+  var imgBaseSizeW = 15;    // 画像の基本サイズ横幅
+  var imgBaseSizeH = 18.5;  // 画像の基本サイズ立幅
+  var aspectMax = 1.5;      // アスペクト比計算時の最大値
+  var aspectMin = 0.5;      // アスペクト比計算時の最小値
+  var speedMax = 2;         // 落下速度の最大値
+  var speedMin = 0.5;       // 落下速度の最小値
+  var angleAdd = 4;         // 画像角度への加算値
+
+  // 画像の読み込み
+  var img = new Image();
+  img.src = "http://www.otwo.jp/blog/demo/canvas/images/sakura.png";
+  img.onload = flow_start;
+
+  // 画像のパラメーターを設定
+  function setImagas(){
+    var aspect = 0;
+    for(var i = 0;i < imgCnt;i++){
+      // 画像サイズに掛けるアスペクト比を0.5~1.5倍でランダムで生成
+      aspect = Math.random()*(aspectMax-aspectMin)+aspectMin;
+      aryImg.push({
+        "posx": Math.random()*cvsw,   // 初期表示位置x
+        "posy": Math.random()*cvsh,   // 初期表示位置y
+        "sizew": imgBaseSizeW*aspect, // 画像の横幅
+        "sizeh": imgBaseSizeH*aspect, // 画像の縦幅
+        "speedy": Math.random()*(speedMax-speedMin)+speedMin,　// 画像が落ちていく速度
+        "angle": Math.random()*360,   // 角度
+      });
+    }
+  }
+
+  // 描画、パラメーターの更新
+  var idx = 0;
+  var cos = 0;
+  var sin = 0;
+  var rad = Math.PI / 180;
+  function flow(){
+    ctx.clearRect(0,0,cvsw,cvsh);
+    for(idx = 0;idx < imgCnt;idx++){
+      aryImg[idx].posy += aryImg[idx].speedy;
+      aryImg[idx].angle += Math.random()*angleAdd;
+      cos = Math.cos(aryImg[idx].angle * rad);
+      sin = Math.sin(aryImg[idx].angle * rad);
+      ctx.setTransform(cos, sin, sin, cos, aryImg[idx].posx, aryImg[idx].posy);
+      ctx.drawImage(img, 0, 0 , aryImg[idx].sizew , aryImg[idx].sizeh);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      // 範囲外に描画された画像を上に戻す
+      if(aryImg[idx].posy >= cvsh){
+        aryImg[idx].posy = -aryImg[idx].sizeh;
+      }
+    }
+  }
+
+  function flow_start(){
+    setImagas();
+    setInterval(flow,10);
+  }
+
+  </script>
+
+
+</div>
+</div>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
