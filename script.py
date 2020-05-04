@@ -212,7 +212,7 @@ def HarukaZe(field):
             result="error"
             break
 
-        count +=1
+        #count +=1
         #print(count)
     return printlist
 
