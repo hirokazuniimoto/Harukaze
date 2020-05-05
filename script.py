@@ -58,7 +58,7 @@ def returnfield1():
     result1=""
     for i in range(len(resultlist)):
         n=i+1
-        result1=result1+"  "+resultlist[i]
+        result1=result1+"  "+str(resultlist[i])
     return render_template('index.html', result=result1)
 
 
@@ -122,6 +122,7 @@ def HarukaZe(field,variabledicts,funcdicts):
             field1=cal.form()
             #flask用関数returnresult()
             result=cal.returnresult()
+            printlist.append(result)
             #print(result)
             #return render_template('index.html', title=result1)
 
