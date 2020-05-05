@@ -263,6 +263,9 @@ def HarukaZe(field,variabledicts,funcdicts):
 
 #HarukaZe(code)
 
+@app.route('/document')
+def index2():
+    return render_template('index2.html')
 
 
 if __name__ == '__main__':
