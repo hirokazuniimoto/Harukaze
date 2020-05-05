@@ -52,6 +52,7 @@ def returnfield1():
     #変数を保存してある辞書を渡す
     variabledicts1={}
     funcdicts1={}
+
     #関数の実行をしてリストで受け取る
     resultlist=HarukaZe(code,variabledicts1,funcdicts1)
     result1=""
@@ -88,6 +89,8 @@ def HarukaZe(field,variabledicts,funcdicts):
 
         #print(variabledicts)
         #print(printlist)
+        #print(funcdicts)
+
 
         strcount2 = 1
         com = ""
@@ -105,10 +108,14 @@ def HarukaZe(field,variabledicts,funcdicts):
         #print(com)   #実行チェック
         #print(field1)   #実行チェック
 
+
         #命令の実行
+
+        '''
         if count==len(field1):
             result="error"
             break
+        '''
 
         if com == "計算":
             cal = Calculate(field1,variabledicts)
@@ -157,12 +164,14 @@ def HarukaZe(field,variabledicts,funcdicts):
             variabledicts.update(stringdict)
             #print(variabledicts)
             #print(variabledicts["string"])
+
         elif com == "繰り返し":
-            rep =Repetition (field1,variabledicts)
+            rep = Repetition(field1,variabledicts,funcdicts)
             field1=rep.repete()
             times = rep.repetetimes()
             field2 = rep.repete2()
             for i in range(times):
+                print(field2)
                 result3=HarukaZe(field2,variabledicts,funcdicts)
                 for g in range(len(result3)):
                     printlist.append(result3[g])
@@ -227,13 +236,13 @@ def HarukaZe(field,variabledicts,funcdicts):
             funcmain = func.returnfuncmain()
             funcdict = {funcname:funcmain}
             funcdicts.update(funcdict)
-            print(funcdicts)
+            #print(funcdicts)
 
         elif com in funcdicts:
             field3=funcdicts[com]
             if field3:
                 result3=HarukaZe(field3,variabledicts,funcdicts)
-                #print(variabledicts)
+                #print(result3)
                 for g in range(len(result3)):
                     printlist.append(result3[g])
 

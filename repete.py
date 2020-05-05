@@ -12,11 +12,13 @@ class Repetition(object):
     variablenumber = 0
     variablenumber2 = 0
     field2=""
+    function=""
 
 
-    def __init__(self,field1,variabledicts):
+    def __init__(self,field1,variabledicts,funcdicts):
         self.field1 = field1
         self.variabledicts = variabledicts
+        self.funcdicts = funcdicts
 
     def repete(self):
         #回数の文字の読み取り
@@ -31,6 +33,7 @@ class Repetition(object):
                 if self.variablenumber :
                     self.firsttimes=int(self.variablenumber)
 
+
                 self.field1=self.field1[self.strcount:]
                 self.result = int(self.firsttimes)
                 #return self.field1
@@ -38,12 +41,19 @@ class Repetition(object):
 
         if self.strcount==len(self.field1):
                 self.result="error"
-
         #｝の前までの処理読み取り
         for g in range(len(self.field1)-1):
             self.strcount3+=1
             self.field2=self.field2+self.field1[g]
+
             if self.field1[g+1]=="}" or self.field1[g+1]=="｝":
+
+                #関数の場合の計算処理
+                if self.field2 in self.funcdicts:
+                    self.function=self.funcdicts[self.field2]
+                if self.function :
+                    self.field2=self.function
+
                 self.field1=self.field1[self.strcount3+1:]
                 break
 
