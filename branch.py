@@ -115,7 +115,7 @@ class Ifbra(object):
                 break
 
         if self.strcount3==len(self.field1):
-                self.result=="error"
+                self.result="error"
 
 
         for h in range(len(self.field1)-2):

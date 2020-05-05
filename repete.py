@@ -48,7 +48,7 @@ class Repetition(object):
                 break
 
         if self.strcount3==len(self.field1):
-             self.result=="error"
+             self.result="error"
 
         return self.field1
 
