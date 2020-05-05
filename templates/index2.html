@@ -3,7 +3,7 @@
 <html lang="ja">
 <head>
 
-  <title>Harukaze</title>
+  <title>Harukaze Document</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- StyleSheet -->
@@ -50,6 +50,14 @@
         .botan{
           height: 45px;
         }
+        .maintitle{
+          font-size:45px;
+          text-shadow:3px 3px 1px black
+        }
+        .command{
+          font-size: 40px;
+          text-shadow:2px 2px 1px black
+        }
 
 
 
@@ -69,6 +77,15 @@
       .botan{
         height: 45px;
       }
+      .maintitle{
+        font-size:45px;
+        text-shadow:3px 3px 1px black
+      }
+      .command{
+        font-size: 40px;
+        text-shadow:2px 2px 1px black
+      }
+
 
 
 
@@ -83,53 +100,42 @@
 </div>
 <div class="container">
 <!-- <p class="display-5 text-light  pt-5 pb-4 ">ここにコードを記述してください</p> -->
-<p class="display-5 text-light titlesent mt-3 ">The programming language</p>
-<h1 class=" text-center pt-2 pb-4 ">HARUKAZE</h1>
+<p class="display-5 text-light titlesent mt-3 ">The programming language HARUKAZE</p>
+<h1 class=" text-center pt-2 pb-4 ">Document</h1>
 <div class="form-group">
   <form method="post" action="/">
   <div class="row">
-      <div class="col-lg-5 col-12">
+      <div class="col-lg-1 col-12"></div>
+      <div class="col-lg-10 col-12">
         <!-- <h1 class="display-1 text-light  pt-5 pb-4 ">HarukaZe</h1> -->
-        <p class="display-5 text-light mainsent text-center mt-5">日本語で命令を実行するプログラミング言語「HARUKAZE」のホームページ及び実行環境です。コードを記述し、実行ボタンを押すと実行結果を表示します。まだ制作途中のため、予期せぬエラーが起きるかもしれません。</p>
-        <p class="display-5 text-light text-center mainsent mt-5">文法、使い方は<a class="document text-light" href="/document">ドキュメント</a>を参考にしてください。</p>
+        <p class="display-5 text-light maintitle text-center mt-5">「HARUKAZE」の文法、使い方</p>
+        <p class="display-5 text-light text-center mainsent mt-5">「HARUKAZE」の文法は基本的に以下の命令を使って、
+        命令:処理　終　のように記述します。特にインデントや空白に規則はありませんが命令は一行に一つずつ記述することをおすすめします。入力コードは全角、半角どちらでもかまいませんが、　+ - / * = : ; < > { } などの記号及び数字は必ず半角で入力してください。（ただし文字列として入力する場合は全角でも可）
+        </p>
+        <p class="display-5 text-light maintitle text-center mt-5">「HARUKAZE」の命令一覧</p>
+        <p class="display-5 text-light command  text-center mt-5">出力</p>
+        <p class="display-5 text-light mainsent text-center mt-2">文字列や数字を実行結果に表示します。C言語のprintf、Pythonのprint関数に似ています。(例　出力："春風" 終)</p>
+        <p class="display-5 text-light command  text-center mt-5">計算</p>
+        <p class="display-5 text-light mainsent text-center mt-2">与えられた計算式を実行し数字を実行結果に表示します。(例　計算：2+3 終)</p>
+        <p class="display-5 text-light command  text-center mt-5">文字変数</p>
+        <p class="display-5 text-light mainsent text-center mt-2">与えられた文字列を変数に代入します。(例　文字変数:食べ物=りんご　終)</p>
+        <p class="display-5 text-light command  text-center mt-5">数値変数</p>
+        <p class="display-5 text-light mainsent text-center mt-2">与えられた数字を変数に代入します。(例　数値変数:数字=100　終)また計算命令を組み込むことによって変数を更新します。この場合最後の"終"の文字は必要なく代わりに計算命令を{}で囲んでください。（例　数字={計算：数字+2 終}）</p>
+        <p class="display-5 text-light command  text-center mt-5">分岐</p>
+        <p class="display-5 text-light mainsent text-center mt-2">; の前で与えられた条件が真であれば処理を実行します。最後の"終"の文字は必要なく処理の最後は}を付けてください。ｃ言語、pythonのif文に似ています。(例　分岐:数字==100;出力：春風　終})</p>
+        <p class="display-5 text-light command  text-center mt-5">繰り返し</p>
+        <p class="display-5 text-light mainsent text-center mt-2">; の前で与えられた回数だけ処理を繰り返します。最後の"終"の文字は必要なく処理の最後は}を付けてください。ｃ言語、pythonのfor文に似ています。(例　繰り返し：3;出力："春風"　終})</p>
+        <p class="display-5 text-light command  text-center mt-5">条件繰り返し</p>
+        <p class="display-5 text-light mainsent text-center mt-2">; の前で与えられた条件が真であれば処理を繰り返し実行します。最後の"終"の文字は必要なく処理の最後は}を付けてください。ｃ言語、pythonのwhile文に似ています。(例　条件繰り返し:数字<200;出力：春風　終 数値変数：数字={計算：数字+2 終}})</p>
+        <p class="display-5 text-light command  text-center mt-5">関数定義</p>
+        <p class="display-5 text-light mainsent text-center mt-2">命令を自分で定義します。定義した命令は　命令名: で実行できます。phpのfunction、pythonのdefに似ています。(例　関数定義:春風(命令名);出力：春風　終})</p>
         <p class="display-5 text-light mainsent text-center mt-5">ソースコード → <a class="github text-light" href="https://github.com/hirokazuniimoto/Harukaze">Github</a></p>
         <p class="display-5 text-light mainsent text-center mt-5">制作者 → <a class=" homepage text-light" href="https://hirokazuniimoto.github.io/portfolio/">ホームページ</a></p>
 
       </div>
+      <div class="col-lg-1 col-12"></div>
 
 
-
-
-
-      <div class="col-lg-7 col-12">
-        <div class="row">
-      <p class="display-5 col-lg-1 col-1"></p>
-      <!--<input  class="text col-11 pt-2 mt-5 username" type="text"  name="field1" value=""　style="font-size:20px; background-color:#FF69A3; width:800px; height:433px;"> -->
-      <textarea   class="col-lg-11 col-10 pt-2 mt-5" cols="20" rows="10" value="" name="field1" style=" border:solid 0px; font-size:20px; background-color:#FF69A3	; width:800px; height:433px;"  >
-  出力："春風"  終
-      </textarea>
-      <p class="display-5 col-lg-0 col-1"></p>
-      </div>
-      <div class="row">
-        <p class="display-5 col-0"></p>
-        <p class="display-5 col-lg-5 col-2"></p>
-        <input type="submit" class="mt-3 btn-primary col-lg-3 col-8 botan" value="コード実行"　style="height:35;">
-        <p class="display-5 col-lg-4 col-2"></p>
-      </div>
-
-      <div class="row">
-        <p class="display-5 col-lg-2 col-2"></p>
-        <p class="display-4 text-center mt-5 text-light kekkatitle col-lg-9 col-8">実行結果</p>
-        <p class="display-5 col-lg-1 col-2"></p>
-      </div>
-
-      <div class="row">
-        <p class="display-5 col-lg-2 col-0" ></p>
-        <p class="kekka display-4 text-center text-light mt-2 col-lg-9 col-12">{{result}}</p>
-        <p class="display-5 col-lg-1 col-0"></p>
-      </div>
-
-    </div>
   </div>
 
 
