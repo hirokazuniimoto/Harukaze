@@ -104,6 +104,7 @@ class Ifbra(object):
             self.strcount3+=1
             if self.field1[g+1]==";" or self.field1[g+1]=="；":
                 self.field1=self.field1[self.strcount3+1:]
+        
                 #変数の場合の計算処理
                 self.secondconrep=self.secondcondition #条件繰り返しのための変数
                 if self.secondcondition in self.variabledicts:
@@ -118,15 +119,15 @@ class Ifbra(object):
                 self.result="error"
 
 
-        for h in range(len(self.field1)-2):
+        for h in range(len(self.field1)-1):
             self.strcount5+=1
             self.field2=self.field2+self.field1[h]
-            if self.field1[h+1]=="}" and self.field1[h+2]=="}":
-                self.field2=self.field2+self.field1[h+2]
-                self.field1=self.field1[self.strcount5+2:]
+            if self.field1[h]=="}" and self.field1[h+1]=="}":
+                #self.field2=self.field2+self.field1[h+1]
+                self.field1=self.field1[self.strcount5+1:]
                 break
             #elif self.field1[h+1]=="}" or self.field1[h+1]=="｝":
-            elif self.field1[h+1]=="}" and self.field1[h+2]!="}":
+            elif self.field1[h+1]=="}" and self.field1[h]!="}":
                 self.field1=self.field1[self.strcount5+1:]
                 break
 

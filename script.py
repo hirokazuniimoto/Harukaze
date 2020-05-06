@@ -18,6 +18,7 @@ from repete import *
 from branch import *
 from conditionrepete import *
 from function import *
+from input import*
 
 '''
 実行関数
@@ -45,16 +46,22 @@ def index():
 
 
 def returnfield1():
+    #コードの受け取り
     code=request.form['field1']
+    #入力の受け取り
+    field2=request.form['field2']
     #受け取ったコードの改行を消去
     code=code.replace("\n","")
     code=code.replace("\r","")
+    field2=field2.replace("\n","")
+    field2=field2.replace("\r","")
     #変数を保存してある辞書を渡す
     variabledicts1={}
     funcdicts1={}
 
+
     #関数の実行をしてリストで受け取る
-    resultlist=HarukaZe(code,variabledicts1,funcdicts1)
+    resultlist=HarukaZe(code,variabledicts1,funcdicts1,field2)
     result1=""
     for i in range(len(resultlist)):
         n=i+1
@@ -62,7 +69,7 @@ def returnfield1():
     return render_template('index.html', result=result1)
 
 
-def HarukaZe(field,variabledicts,funcdicts):
+def HarukaZe(field,variabledicts,funcdicts,input1):
     com = ""
     Command = ['計算','出力',] #必要ない
     g = 0 #必要ない
@@ -76,11 +83,13 @@ def HarukaZe(field,variabledicts,funcdicts):
     printlist  = []
 
     field1=field
+    field3=input1
 
     #コードの空白消去
     field1=field1.replace(" ","")
     field1=field1.replace("　","")
-
+    field3=field3.replace(" ","")
+    field3=field3.replace("　","")
 
     #繰り返し命令実行
 
@@ -134,6 +143,26 @@ def HarukaZe(field,variabledicts,funcdicts):
             result=pri.returnresult()
             printlist.append(result)
 
+        elif com == "数値入力":
+            inp = Inputer(field1,variabledicts)
+            field1=inp.inputstr()
+            result=inp.returnresult()
+            field3=int(field3)
+            numberdict = {result : field3}
+            field3=""
+            variabledicts.update(numberdict)
+
+        elif com == "文字入力":
+            inp = Inputer(field1,variabledicts)
+            field1=inp.inputstr()
+            result=inp.returnresult()
+            field3=str(field3)
+            stringdict = {result : field3}
+            field3=""
+            variabledicts.update(stringdict)
+
+
+
         elif com == "数値変数":
             var = Variable(field1)
             field1=var.varmker()
@@ -172,17 +201,21 @@ def HarukaZe(field,variabledicts,funcdicts):
             times = rep.repetetimes()
             field2 = rep.repete2()
             for i in range(times):
-                print(field2)
-                result3=HarukaZe(field2,variabledicts,funcdicts)
+                #print(field2)
+                result3=HarukaZe(field2,variabledicts,funcdicts,field3)
                 for g in range(len(result3)):
                     printlist.append(result3[g])
         elif com == "分岐":
+
             ifbra = Ifbra(field1,variabledicts)
             field1 = ifbra.branch()
             result = ifbra.returnresult()
             field2 = ifbra.branch2()
+
             if result=="true":
-                HarukaZe(field2)
+                result3=HarukaZe(field2,variabledicts,funcdicts,field3)
+                for g in range(len(result3)):
+                    printlist.append(result3[g])
 
         elif com == "条件繰り返し":
 
@@ -218,7 +251,7 @@ def HarukaZe(field,variabledicts,funcdicts):
             while result=="true":
                 variabledicts2=variabledicts
                 #print(variabledicts2)
-                result3=HarukaZe(field2,variabledicts,funcdicts)
+                result3=HarukaZe(field2,variabledicts,funcdicts,field3)
                 #print(variabledicts)
                 for g in range(len(result3)):
                     printlist.append(result3[g])
@@ -242,7 +275,7 @@ def HarukaZe(field,variabledicts,funcdicts):
         elif com in funcdicts:
             field3=funcdicts[com]
             if field3:
-                result3=HarukaZe(field3,variabledicts,funcdicts)
+                result3=HarukaZe(field3,variabledicts,funcdicts,field3)
                 #print(result3)
                 for g in range(len(result3)):
                     printlist.append(result3[g])
