@@ -115,6 +115,10 @@
         <p class="display-5 text-light maintitle text-center mt-5">「HARUKAZE」の命令一覧</p>
         <p class="display-5 text-light command  text-center mt-5">出力</p>
         <p class="display-5 text-light mainsent text-center mt-2">文字列や数字を実行結果に表示します。C言語のprintf、Pythonのprint関数に似ています。(例　出力："春風" 終)</p>
+        <p class="display-5 text-light command  text-center mt-5">文字入力</p>
+        <p class="display-5 text-light mainsent text-center mt-2">入力欄に入力された文字を変数に代入します。(例　文字入力：言語(変数名) 終、(入力欄)　春風）</p>
+        <p class="display-5 text-light command  text-center mt-5">数値入力</p>
+        <p class="display-5 text-light mainsent text-center mt-2">入力欄に入力された数値を変数に代入します。(例　数値入力：回数(変数名) 終、(入力欄)　5）</p>
         <p class="display-5 text-light command  text-center mt-5">計算</p>
         <p class="display-5 text-light mainsent text-center mt-2">与えられた計算式を実行し数字を実行結果に表示します。(例　計算：2+3 終)</p>
         <p class="display-5 text-light command  text-center mt-5">文字変数</p>
@@ -129,6 +133,15 @@
         <p class="display-5 text-light mainsent text-center mt-2">; の前で与えられた条件が真であれば処理を繰り返し実行します。最後の"終"の文字は必要なく処理の最後は}を付けてください。ｃ言語、pythonのwhile文に似ています。(例　条件繰り返し:数字<200;出力：春風　終 数値変数：数字={計算：数字+2 終}})</p>
         <p class="display-5 text-light command  text-center mt-5">関数定義</p>
         <p class="display-5 text-light mainsent text-center mt-2">命令を自分で定義します。定義した命令は　命令名: で実行できます。phpのfunction、pythonのdefに似ています。(例　関数定義:春風(命令名);出力：春風　終})</p>
+
+        <p class=pt-3"></p>
+        <p class="display-5 text-light command  text-center mt-5">HARUKAZEコード例</p>
+        <p class="display-5 text-light mainsent text-center mt-2">以下は実際にHARUKAZEを使ってコーディングした例です。入力された月の去年の東京の平均気温を表示しています。(例のため8月と12月のみ)</p>
+        <textarea   class="w-100 pt-2 mt-2" cols="20" rows="10" value="" name="field1" style=" border:solid 0px; font-size:20px; background-color:#FF69A3	; width:800px; height:233px;"  >
+    文字入力:月 終
+    分岐:月==8月;出力:"31℃"　終 }
+    分岐:月==12月;出力:"12℃"　終 }
+        </textarea>
         <p class="display-5 text-light mainsent text-center mt-5">ソースコード → <a class="github text-light" href="https://github.com/hirokazuniimoto/Harukaze">Github</a></p>
         <p class="display-5 text-light mainsent text-center mt-5">制作者 → <a class=" homepage text-light" href="https://hirokazuniimoto.github.io/portfolio/">ホームページ</a></p>
 
