@@ -47,15 +47,17 @@ class Calculate(object):
                 if self.variablenumber :
                     self.firstnumber=str(self.variablenumber)
 
+
                 self.firstoper = self.firstnumber+self.operation
                 self.field1=self.field1[self.strcount:]
                 break
 
-        
 
-        if self.strcount==len(self.firstnumber)+len(self.operation)+len(self.field1):
+        '''
+        if self.strcount==len(self.field1):
             self.result=self.field1[:1]
             self.sub="rrr"
+        '''
 
 
         #最後までの文字の読み取り
@@ -70,7 +72,6 @@ class Calculate(object):
                     self.variablenumber2=str(self.variablenumber2)
                 if self.variablenumber2 :
                     self.secondnumber=str(self.variablenumber2)
-
 
                 #calculate関数の実行
                 self.calculate(self.firstnumber,self.operation,self.secondnumber)
