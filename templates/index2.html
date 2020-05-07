@@ -110,7 +110,8 @@
         <!-- <h1 class="display-1 text-light  pt-5 pb-4 ">HarukaZe</h1> -->
         <p class="display-5 text-light maintitle text-center mt-5">「HARUKAZE」の文法、使い方</p>
         <p class="display-5 text-light text-center mainsent mt-5">「HARUKAZE」の文法は基本的に以下の命令を使って、
-        命令:処理　終　のように記述します。特にインデントや空白に規則はありませんが命令は一行に一つずつ記述することをおすすめします。入力コードは全角、半角どちらでもかまいませんが、　+ - / * = : ; < > { } などの記号及び数字は必ず半角で入力してください。（ただし文字列として入力する場合は全角でも可）
+        命令:処理　終　のように記述します。特にインデントや空白に規則はありませんが命令は一行に一つずつ記述することをおすすめします。入力コードは全角、半角どちらでもかまいませんが、　+ - / * = : ; < > { } など
+        の記号及び数字は必ず半角で入力してください。（ただし文字列として入力する場合は全角でも可）数字は整数値のみを扱います。
         </p>
         <p class="display-5 text-light maintitle text-center mt-5">「HARUKAZE」の命令一覧</p>
         <p class="display-5 text-light command  text-center mt-5">出力</p>
@@ -125,6 +126,10 @@
         <p class="display-5 text-light mainsent text-center mt-2">与えられた文字列を変数に代入します。(例　文字変数:食べ物=りんご　終)</p>
         <p class="display-5 text-light command  text-center mt-5">数値変数</p>
         <p class="display-5 text-light mainsent text-center mt-2">与えられた数字を変数に代入します。(例　数値変数:数字=100　終)また計算命令を組み込むことによって変数を更新します。この場合最後の"終"の文字は必要なく代わりに計算命令を{}で囲んでください。（例　数値変数：数字={計算：数字+2 終}）</p>
+        <p class="display-5 text-light command  text-center mt-5">配列</p>
+        <p class="display-5 text-light mainsent text-center mt-2">与えられた文字列を , で区切って配列に代入します。配列の各要素は配列名[要素の位置]でアクセスできます。(例　配列：食べ物=りんご,ぶどう,みかん 終 出力：食べ物[1] 終）</p>
+        <p class="display-5 text-light command  text-center mt-5">型変換</p>
+        <p class="display-5 text-light mainsent text-center mt-2">;の前で与えられた文字列、数値及び変数の型を変換します。(例　型変換：3(数値型);文字列型 終)</p>
         <p class="display-5 text-light command  text-center mt-5">分岐</p>
         <p class="display-5 text-light mainsent text-center mt-2">; の前で与えられた条件が真であれば処理を実行します。最後の"終"の文字は必要なく処理の最後は}を付けてください。ｃ言語、pythonのif文に似ています。(例　分岐:数字==100;出力：春風　終})</p>
         <p class="display-5 text-light command  text-center mt-5">繰り返し</p>
