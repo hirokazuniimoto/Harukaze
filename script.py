@@ -19,6 +19,7 @@ from branch import *
 from conditionrepete import *
 from function import *
 from input import*
+from changetype import*
 
 '''
 実行関数
@@ -131,6 +132,7 @@ def HarukaZe(field,variabledicts,funcdicts,input1):
             field1=cal.form()
             #flask用関数returnresult()
             result=cal.returnresult()
+
             printlist.append(result)
             #print(result)
             #return render_template('index.html', title=result1)
@@ -194,6 +196,41 @@ def HarukaZe(field,variabledicts,funcdicts,input1):
             variabledicts.update(stringdict)
             #print(variabledicts)
             #print(variabledicts["string"])
+        elif com=="配列":
+            #文字変数クラスを使う
+            array = Variablestr(field1)
+            field1=array.varmker2()
+
+            array1 = array.varlistcall2()
+            array2 = array.varnumbercall2()
+            #,で区切ってリスト化
+            array2=array2.split(',')
+            #リストの要素にそれぞれ変数名をつける
+            for i in range(len(array2)):
+                arraylist=array1+"["+str(i)+"]"
+                key=array2[i]
+                arraydict = {arraylist :key}
+                print(type(arraydict[arraylist]))
+                variabledicts.update(arraydict)
+
+        elif com == "型変換":
+            typechange = Changetype(field1,variabledicts,funcdicts)
+            field1=typechange.changetype()
+            #型を受け取る
+            field2 = typechange.changetype2()
+            #変数名を受け取る
+            variablename=typechange.returnvariablename()
+            #型変換するものを受け取る
+            type1 = typechange.repetetimes()
+            #繰り返しクラスと同じ関数を使って終の文字まで読み取るのでそれを含む処理
+            if field2=="数値型終":
+                type1=int(type1)
+                typedict={variablename:type1}
+                variabledicts.update(typedict)
+            elif field2=="文字列型終":
+                type1=str(type1)
+                typedict={variablename:type1}
+                variabledicts.update(typedict)
 
         elif com == "繰り返し":
             rep = Repetition(field1,variabledicts,funcdicts)

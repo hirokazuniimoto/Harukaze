@@ -1,9 +1,9 @@
 '''
-    this is 繰り返し Command module
+    this is 型変換 Command module
 '''
 
 
-class Repetition(object):
+class Changetype(object):
     firsttimes = ""
     secondnumber = ""
     result=0
@@ -21,7 +21,7 @@ class Repetition(object):
         self.variabledicts = variabledicts
         self.funcdicts = funcdicts
 
-    def repete(self):
+    def changetype(self):
         #回数の文字の読み取り
         for i in range(len(self.field1)-2):
             self.firsttimes=self.firsttimes+self.field1[i]
@@ -31,13 +31,13 @@ class Repetition(object):
                 #変数の場合の計算処理
                 if self.firsttimes in self.variabledicts:
                     self.variablename=self.firsttimes
-                    #self.variablenumber=self.variabledicts[self.firsttimes]
+                    self.variablenumber=self.variabledicts[self.firsttimes]
                 if self.variablenumber :
-                    self.firsttimes=int(self.variablenumber)
+                    self.firsttimes=self.variablenumber
 
 
                 self.field1=self.field1[self.strcount:]
-                self.result = int(self.firsttimes)
+                self.result = self.firsttimes
                 #return self.field1
                 break
 
@@ -64,11 +64,11 @@ class Repetition(object):
 
         return self.field1
 
-    def repete2(self):
+    def changetype2(self):
         return self.field2
 
-    #def returnvariablename(self):
-        #return self.variablename
+    def returnvariablename(self):
+        return self.variablename
 
     def repetetimes(self):
         return self.result
