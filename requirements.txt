@@ -14,7 +14,7 @@ grpc-google-cloud-speech-v1==0.8.1
 grpc-google-cloud-speech-v1beta1==1.0.1
 grpcio==1.25.0
 gunicorn==20.0.4
-httplib2==0.14.0
+httplib2==0.18.0
 idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10.3
